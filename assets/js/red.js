@@ -1,0 +1,1 @@
+document.location.href="http://happyread.kh.edu.tw/readerquiz/menu_stu.php"//重新導向
