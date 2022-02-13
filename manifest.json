@@ -1,6 +1,6 @@
 {
     "manifest_version": 2,
-    "version": "0.0.8",
+    "version": "0.1.0",
     "name": "簡單愛閱網 - 愛閱網的剋星",
     "description": "本插件會更改愛閱網的題目，並提供答案，問題快速解答！",
     "icons": {
@@ -19,11 +19,7 @@
     },
     "content_scripts": [{
         "matches": ["*://happyread.kh.edu.tw/*", "*://163.16.5.166/*"],
-        "js": ["assets/js/query_answer_button.js"]
-    },
-    {
-        "matches": ["*://happyread.kh.edu.tw/result.action", "*://163.16.5.166/result.action"],
-        "js": ["assets/js/add_answer_button.js"]
+        "js": ["assets/js/answer.js"]
     },
     {
         "matches": ["*://happyread.kh.edu.tw/readerquiz", "*://163.16.5.166/readerquiz"],
