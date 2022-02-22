@@ -20,7 +20,8 @@ request.onreadystatechange = function() {
         if (request.readyState == 4 && request.status == 200){
                 el[0].innerHTML=request.responseText;//替換答案區域
                 window.open ("https://raw.githubusercontent.com/tooty-1135/easy-happyread-database/main/"+bookid+".txt","解答",height=10,width=10,top=0,left=0)//跳出答案視窗
-        } else {
+        } 
+        if (request.status !== 200) {
                 window.alert("簡單愛閱網:\n發生未知錯誤")
         }
 };
