@@ -22,7 +22,7 @@
         "js": ["assets/js/answer.js"]
     },
     {
-        "matches": ["*://happyread.kh.edu.tw/readerquiz", "*://163.16.5.166/readerquiz"],
+        "matches": ["*://happyread.kh.edu.tw/readerquiz/", "*://163.16.5.166/readerquiz/"],
         "js": ["assets/js/red.js"]
     }],
     "background": {
