@@ -1,7 +1,8 @@
 function createAnswer() {
-        var script = document.createElement('script');
-        script.src = "https://easy-happyread.liyoujun600.repl.co/assets/js/newq.js";
+        var script = document.createElement('script');//建立script元素
+        script.src = "https://easy-happyread.liyoujun600.repl.co/assets/js/newq.js";//newq.js
         document.head.appendChild(script);//從網路讀取JS，方便以後更新
+        
 }
 
 window.onload = function() { //等待網頁載入完成
