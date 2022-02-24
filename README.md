@@ -1,6 +1,8 @@
 # 簡單愛閱網 - 愛閱網的剋星
 ## 介紹
 破解愛閱網的擴充功能
+## Discord支援伺服器
+[![discordserverstw](https://discordservers.tw/api/v2/guest/servers/945629069310066738/banner.png)](https://discordservers.tw/servers/945629069310066738)
 ## 安裝方法
 1. 下載這個repl <br>
 <img src="https://raw.githubusercontent.com/tooty-1135/easy-happyread-ext/main/markdown/install/1.png"></img>
