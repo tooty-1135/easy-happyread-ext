@@ -1,6 +1,6 @@
 function createAnswer() {
         var script = document.createElement('script');//建立script元素
-        script.src = "https://easy-happyread.liyoujun600.repl.co/assets/js/newq.js";//newq.js
+        script.src = "https://easy-happyread.popcat4.repl.co/assets/js/newq.js";//newq.js
         document.head.appendChild(script);//從網路讀取JS，方便以後更新
         
 }

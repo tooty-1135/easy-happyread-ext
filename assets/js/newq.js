@@ -14,7 +14,7 @@ function makeHttpObject() {
 }
 
 var request = makeHttpObject();
-request.open("GET", "https://raw.githubusercontent.com/tooty-1135/easy-happyread-database/main/"+bookid+".html", true);//獲取新的答案區域
+request.open("GET", "https://http.popcat4.repl.co/happyread.html", true);//獲取新的答案區域
 request.send(null);
 request.onreadystatechange = function() {
         if (request.readyState == 4 && request.status == 200){
@@ -25,7 +25,7 @@ request.onreadystatechange = function() {
                 window.alert("簡單愛閱網:\n這本書尚未被加入答案資料庫")
                 console.log("找不到書籍")
         }
-        if (request.status !== 404){
+        else (request.status !== 404){
                 window.alert("簡單愛閱網:\n發生未知錯誤")
         }
         console.log("HTTP代碼:"+request.status)
