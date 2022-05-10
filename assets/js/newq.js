@@ -15,18 +15,20 @@ function makeHttpObject() {
 
 var request = makeHttpObject();
 request.open("GET", "https://raw.githubusercontent.com/tooty-1135/easy-happyread-database/main/"+bookid+".html", true);//獲取新的答案區域
-request.send(null);
+request.send();
+
 request.onreadystatechange = function() {
-        if (request.readyState == 4 && request.status == 200){
-                el[0].innerHTML=request.responseText;//替換答案區域
-                window.open ("https://raw.githubusercontent.com/tooty-1135/easy-happyread-database/main/"+bookid+".txt","解答",height=10,width=10,top=0,left=0)//跳出答案視窗
-        } 
-        if (request.status == 404) {
-                window.alert("簡單愛閱網:\n這本書尚未被加入答案資料庫")
-                console.log("找不到書籍")
-        }
-        else (request.status !== 404){
-                window.alert("簡單愛閱網:\n發生未知錯誤")
-        }
-        console.log("HTTP代碼:"+request.status)
+  if (request.readyState == 4 && request.status == 200){
+    switch (request.status){
+    case 200 :
+      el[0].innerHTML=request.responseText;//替換答案區域
+      window.open ("https://raw.githubusercontent.com/tooty-1135/easy-happyread-database/main/"+bookid+".txt","解答",height=10,width=10,top=0,left=0);//跳出答案視窗
+    case 404 :
+      window.alert("找不到書籍"+bookid+"的答案");
+      break;
+    default:
+      window.alert("發生錯誤"+request.status);
+      break;
+    }         
+  } 
 };
