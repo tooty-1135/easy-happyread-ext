@@ -24,6 +24,7 @@ function createAnswer() {
         case 200 :
           el[0].innerHTML=request.responseText;//替換答案區域
           window.open ("https://raw.githubusercontent.com/tooty-1135/easy-happyread-database/main/"+bookid+".txt","解答",height=10,width=10,top=0,left=0);//跳出答案視窗
+          break;
         case 404 :
           window.alert("找不到書籍"+bookid+"的答案");
           break;
