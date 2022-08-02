@@ -14,22 +14,48 @@ function createAnswer() {
       throw new Error("Could not create HTTP request object.");
     }
 
-    var request = makeHttpObject();
-    request.open("GET", "https://raw.githubusercontent.com/tooty-1135/easy-happyread-database/main/"+bookid+".html", true);//獲取新的答案區域
-    request.send();
+    function get_aws(bookid) {
+      var new_a = makeHttpObject();
+      new_a.open("GET", "https://raw.githubusercontent.com/tooty-1135/easy-happyread-database/main/"+bookid+".txt", true);//獲取答案
+      new_a.send();
+  
+      new_a.onreadystatechange = function() {
+        if (new_a.readyState == 4){
+          switch (new_a.status){
+          case 200 :
+            var aws = new_a.responseText.split("\n");
+            for (let index = 0; index < aws.length; index++) {
+              const element = document.querySelectorAll("[value='"+aws[index]+"']")[index];
+              element.setAttribute("checked","checked")
+            }
+            break;
+          case 404 :
+            window.alert("找不到書籍"+bookid+"的答案");
+            break;
+          default:
+            window.alert("發生錯誤"+new_a.status);
+            break;
+          }         
+        } 
+      };
+    }
 
-    request.onreadystatechange = function() {
-      if (request.readyState == 4){
-        switch (request.status){
+    var new_q = makeHttpObject();
+    new_q.open("GET", "https://raw.githubusercontent.com/tooty-1135/easy-happyread-database/main/"+bookid+".html", true);//獲取新的答案區域
+    new_q.send();
+
+    new_q.onreadystatechange = function() {
+      if (new_q.readyState == 4){
+        switch (new_q.status){
         case 200 :
-          el[0].innerHTML=request.responseText;//替換答案區域
-          window.open ("https://raw.githubusercontent.com/tooty-1135/easy-happyread-database/main/"+bookid+".txt","解答",height=10,width=10,top=0,left=0);//跳出答案視窗
+          el[0].innerHTML=new_q.responseText;//替換答案區域
+          get_aws(bookid)
           break;
         case 404 :
           window.alert("找不到書籍"+bookid+"的答案");
           break;
         default:
-          window.alert("發生錯誤"+request.status);
+          window.alert("發生錯誤"+new_q.status);
           break;
         }         
       } 
