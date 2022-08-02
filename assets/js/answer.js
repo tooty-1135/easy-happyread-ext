@@ -25,8 +25,12 @@ function createAnswer() {
           case 200 :
             var aws = new_a.responseText.split("\n");
             for (let index = 0; index < aws.length; index++) {
-              const element = document.querySelectorAll("[value='"+aws[index]+"']")[index];
-              element.setAttribute("checked","checked")
+              const element = document.querySelectorAll("[value='"+aws[index]+"']");
+              if (element.length > 10){
+                element[index+1].setAttribute("checked","checked");
+              } else {
+                element[index].setAttribute("checked","checked");
+              }
             }
             break;
           case 404 :
