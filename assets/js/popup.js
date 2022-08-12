@@ -35,4 +35,61 @@ function check_update(){
       };
 };
 
-window.onload = check_update();
+function setting_vis(hide) {
+  settings = document.getElementById("settings")
+  if (hide == "true") {
+    settings.removeAttribute("hidden")
+  } else {
+    settings.setAttribute("hidden","")
+  }
+}
+
+function add_listener() {
+  const autofill = document.getElementById("autofill")
+  autofill.addEventListener('change', (event) => {
+    if(autofill.checked){
+      localStorage["autofill"] = true
+    } else {
+      localStorage["autofill"] = false
+    }
+    chrome.tabs.executeScript(null, {code:`localStorage["autofill"] = ${localStorage["autofill"]}`});
+    console.log(localStorage["autofill"])
+  })
+
+  const enable = document.getElementById("enable")
+  enable.addEventListener('change', (event) => {
+    if(enable.checked){
+      localStorage["enable"] = true
+    } else {
+      localStorage["enable"] = false
+    }
+    setting_vis(localStorage["enable"]);
+    chrome.tabs.executeScript(null, {code:`localStorage["enable"] = ${localStorage["enable"]}`});
+    console.log(localStorage["enable"])
+  })
+}
+
+function setup() {
+  if(localStorage["autofill"] == "true") {
+    const autofill = document.getElementById("autofill");
+    autofill.setAttribute("checked","")
+  }
+
+  settings = document.getElementById("settings")
+  if (localStorage["enable"] == "true") {
+    settings.removeAttribute("hidden")
+  } else {
+    settings.setAttribute("hidden","")
+  }
+
+  if(localStorage["enable"] == "true") {
+    const enable = document.getElementById("enable");
+    enable.setAttribute("checked","")
+  }
+}
+
+window.onload = function() {
+  setup();
+  check_update();
+  add_listener();
+}

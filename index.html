@@ -3,7 +3,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>關於本插件</title>
-	<link rel="stylesheet" href="assets/vendor/bootstrap/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/popup.css" type="text/css">
 </head>
 
 <body style="width: 550px;">
@@ -20,29 +20,39 @@
     </div>
 	<div class="container">
 		<br>
-            <div class="row">
                 <div class="col-md-12">
                     <center><h1>關於本插件</h1><center>
                     <hr>
-                    <p>本插件會更改愛閱網的題目，並提供答案，問題快速解答！</p>
+                    <p>插件</p>
                 </div>
-            </div>
             <br><br>
             </div>
-            <div class="row mb-4">
-                <div class="col-md-12 mb-2">
-                    <a class="btn btn-outline-primary btn-block" href="https://github.com/tooty-1135/easy-happyread-ext/" target="_blank">這個插件的 GitHub</a>
-                </div>
-                <div class="col-md-12 mb-2">
-                    <a class="btn btn-outline-primary btn-block" href="https://github.com/tooty-1135/easy-happyread-ext/issues/new" target="_blank">回報插件問題</a>
-                </div>
-            </div>
-            <div class="row mb-4" hidden>
-                <div class="col-md-12 mb-2">
-                    <a class="btn btn-outline-primary btn-block" href="https://chrome.google.com/webstore/category/extensions" target="_blank">Chrome 線上應用程式商店</a>
-                </div>
-            </div>
         </div>
+
+        <div class="btn">
+            <a href="https://github.com/tooty-1135/easy-happyread-ext/" target="_blank">這個插件的 GitHub</a>
+        </div>
+        <div class="btn">
+            <a href="https://github.com/tooty-1135/easy-happyread-ext/issues/new" target="_blank">回報插件問題</a>
+        </div>
+        <div class="btn">
+            <a href="https://chrome.google.com/webstore/category/extensions" target="_blank">Chrome 線上應用程式商店</a>
+        </div>
+
+        <input type="checkbox" id="enable" class="switch-input" />
+        <label for="enable" class="switch-label enable-sw">
+            <span class="switch-txt" turnOn="On" turnOff="Off"></span>
+        </label>
+
+        <div id="settings">
+
+            <input type="checkbox" id="autofill" class="switch-input" />
+            <label for="autofill" class="switch-label autofill-sw">
+                <span class="switch-txt" turnOn="On" turnOff="Off"></span>
+            </label>
+        </div>
+        
+
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="assets/vendor/bootstrap/js/bootstrap.min.js" type="text/javascript"></script> -->
         <script src="./assets/js/popup.js"></script>

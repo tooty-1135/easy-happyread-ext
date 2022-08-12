@@ -14,7 +14,7 @@ function createAnswer() {
       throw new Error("Could not create HTTP request object.");
     }
 
-    function get_aws(bookid) {
+    function fill_aws(bookid) {
       var new_a = makeHttpObject();
       new_a.open("GET", "https://raw.githubusercontent.com/tooty-1135/easy-happyread-database/main/"+bookid+".txt", true);//獲取答案
       new_a.send();
@@ -23,14 +23,18 @@ function createAnswer() {
         if (new_a.readyState == 4){
           switch (new_a.status){
           case 200 :
-            var aws = new_a.responseText.split("\n");
-            for (let index = 0; index < aws.length; index++) {
-              const element = document.querySelectorAll("[value='"+aws[index]+"']");
-              if (element.length > 10){
-                element[index+1].setAttribute("checked","checked");
-              } else {
-                element[index].setAttribute("checked","checked");
+            if(localStorage["autofill"] == "true") {
+              var aws = new_a.responseText.split("\n");
+              for (let index = 0; index < aws.length; index++) {
+                const element = document.querySelectorAll("[value='"+aws[index]+"']");
+                if (element.length > 10){
+                  element[index+1].setAttribute("checked","checked");
+                } else {
+                  element[index].setAttribute("checked","checked");
+                }
               }
+            } else {
+              window.open("https://raw.githubusercontent.com/tooty-1135/easy-happyread-database/main/"+bookid+".txt")
             }
             break;
           case 404 :
@@ -53,7 +57,7 @@ function createAnswer() {
         switch (new_q.status){
         case 200 :
           el[0].innerHTML=new_q.responseText;//替換答案區域
-          get_aws(bookid)
+          fill_aws(bookid)
           break;
         case 404 :
           window.alert("找不到書籍"+bookid+"的答案");
@@ -67,5 +71,7 @@ function createAnswer() {
 }
 
 window.onload = function() { //等待網頁載入完成
+  if(localStorage["enable"] == "true") {
     setTimeout("createAnswer()", 500); //延遲 0.5 秒執行
+  };
 };
